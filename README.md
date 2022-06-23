@@ -12,4 +12,4 @@ We hope this repository will grow to include contributions from the PhysiCell co
 * [ParaView](https://www.paraview.org/) - our description on [usage](ParaView/README.md)
 * [Simularium](https://simularium.allencell.org/) - our description on [usage](Simularium/README.md)
 * [VTK](https://vtk.org/) - our description on [usage](VTK/README.md)
-* [FURY](https://furl.gl) - our description on [usage](FURY/README.md)
+* [FURY](https://fury.gl) - our description on [usage](FURY/README.md)
