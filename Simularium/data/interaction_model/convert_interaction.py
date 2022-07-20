@@ -1,7 +1,6 @@
 from IPython.display import Image
 import numpy as np
 from simulariumio.physicell import PhysicellConverter, PhysicellData
-# from physicell_converter import PhysicellConverter
 from simulariumio import UnitData, MetaData, DisplayData, DISPLAY_TYPE, ModelMetaData
 
 box_size = 800.0  # [-400,400]
