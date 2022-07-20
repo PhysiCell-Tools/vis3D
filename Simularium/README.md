@@ -9,5 +9,7 @@ cp pyMCDS_v3.py /Users/heiland/anaconda3/lib/python3.9/site-packages/simulariumi
 
 Finally, from the directory of your model's output files:
 ```
-python convert_to_simularium.py
+python convert_to_simularium.py    # you want to customize this script for your data
 ```
+
+This will generate a Simularium file which you can upload from https://simularium.allencell.org/viewer
