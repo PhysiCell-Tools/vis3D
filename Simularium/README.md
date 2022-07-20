@@ -2,13 +2,12 @@ Workflow to convert a PhysiCell model's results (`/output`) to a Simularium obje
 
 You will need to `pip install simulariumio` (we assume you've already installed the Anaconda Python 3.x distribution).
 
-See`https://github.com/simularium/simulariumio/blob/main/examples/Tutorial_physicell.ipynb` for the basic Jupyter notebook procedure for 
-converting your PhysiCell data and uploading to the Simularium viewer. But in the `path_to_output_dir` line (see below), you may need
-to provide the *full* path and not a relative path:
-
+And until the simulariumio pkg is updated for the newer pyMCDS, you need to overwrite what is there withe "_v3" version, e.g. (replacing 'heiland' with your username):
 ```
-example_data = PhysicellData(
-    timestep=30.0,
-    path_to_output_dir="/Users/heiland/PhysiCell/output",
-...
+cp pyMCDS_v3.py /Users/heiland/anaconda3/lib/python3.9/site-packages/simulariumio/physicell/dep/pyMCDS.py
+```
+
+Finally, from the directory of your model's output files:
+```
+python convert_to_simularium.py
 ```
