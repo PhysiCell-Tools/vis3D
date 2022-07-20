@@ -34,6 +34,10 @@ my_model_data = PhysicellData(
             url="bacteria.obj",
             color="#dfdacd",
         ),
+        1: DisplayData(
+            name="bacteria",
+            color="#0080ff",
+        ),
     },
     phase_names={
         0: {4: "G0G1"},
