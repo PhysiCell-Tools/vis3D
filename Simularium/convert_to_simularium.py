@@ -1,7 +1,5 @@
-from IPython.display import Image
 import numpy as np
 from simulariumio.physicell import PhysicellConverter, PhysicellData
-# from physicell_converter import PhysicellConverter
 from simulariumio import UnitData, MetaData, DisplayData, DISPLAY_TYPE, ModelMetaData
 
 box_size = 800.0  # [-400,400]
@@ -44,4 +42,4 @@ my_model_data = PhysicellData(
 )
 
 print("calling PhysicellConverter...\n")
-PhysicellConverter(my_model_data).write_JSON("mydata_to_upload")
+PhysicellConverter(my_model_data).save("mydata_to_upload")
