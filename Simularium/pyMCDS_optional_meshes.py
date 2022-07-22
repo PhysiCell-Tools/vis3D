@@ -1,3 +1,17 @@
+# NOTE: this module will likely replace the pyMCDS.py module once it is tested further
+#
+# This module provides an optional 3rd argument: a boolean flag to indicate that 
+#    continuum (microenv) data should be read. The flag is True by default (microenv data will be read).
+#    If your model has generated large output files and you only want to extract cell information, you could
+#    set this flag to False.
+#
+#  Example usage:
+#  from pyMCDS_optional_meshes import pyMCDS
+#  mcds = pyMCDS('output00000000.xml')
+#  mcds = pyMCDS('output00000000.xml', '.')   # optional 2nd arg indicating data directory
+#  mcds = pyMCDS('output00000000.xml', '.', False)   # skip over microenv data
+#
+
 import xml.etree.ElementTree as ET
 import numpy as np
 import pandas as pd
@@ -28,8 +42,8 @@ class pyMCDS:
         Hierarchical container for all of the data retrieved by parsing the xml
         file and the files referenced therein.
     """
-    def __init__(self, xml_file, parse_continuum_variables=True, output_path="."):
-        self.data = self._read_xml(xml_file, parse_continuum_variables, output_path)
+    def __init__(self, xml_file, output_path=".", parse_continuum_variables=True):
+        self.data = self._read_xml(xml_file, output_path, parse_continuum_variables)
 
     # METADATA RELATED FUNCTIONS
 
@@ -341,7 +355,7 @@ class pyMCDS:
         vox_df = cell_df[inside_voxel]
         return vox_df
 
-    def _read_xml(self, xml_file, parse_continuum_variables, output_path="."):
+    def _read_xml(self, xml_file, output_path=".", parse_continuum_variables=True):
         """
         Does the actual work of initializing MultiCellDS by parsing the xml
         """
