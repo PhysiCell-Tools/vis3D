@@ -28,8 +28,7 @@ class pyMCDS:
         Hierarchical container for all of the data retrieved by parsing the xml
         file and the files referenced therein.
     """
-
-    def __init__(self, xml_file, parse_continuum_variables, output_path="."):
+    def __init__(self, xml_file, parse_continuum_variables=True, output_path="."):
         self.data = self._read_xml(xml_file, parse_continuum_variables, output_path)
 
     # METADATA RELATED FUNCTIONS
@@ -398,24 +397,24 @@ class pyMCDS:
         MCDS["mesh"]["z_coordinates"] = zz
 
         # Voxel data must be loaded from .mat file
-        # voxel_file = mesh_node.find('voxels').find('filename').text
-        # voxel_path = output_path / voxel_file
-        # try:
-        #     initial_mesh = sio.loadmat(voxel_path)['mesh']
-        # except:
-        #     raise FileNotFoundError(
-        #         "No such file or directory:\n'{}' referenced in '{}'".format(
-        #         voxel_path, xml_file)
-        #     )
-        #     sys.exit(1)
-        #
-        # print('Reading {}'.format(voxel_path))
-        #
+        voxel_file = mesh_node.find('voxels').find('filename').text
+        voxel_path = output_path / voxel_file
+        try:
+            initial_mesh = sio.loadmat(voxel_path)['mesh']
+        except:
+            raise FileNotFoundError(
+                "No such file or directory:\n'{}' referenced in '{}'".format(
+                voxel_path, xml_file)
+            )
+            sys.exit(1)
+        
+        print('Reading {}'.format(voxel_path))
+        
         # # center of voxel specified by first three rows [ x, y, z ]
         # # volume specified by fourth row
-        # MCDS['mesh']['voxels'] = {}
-        # MCDS['mesh']['voxels']['centers'] = initial_mesh[:3, :]
-        # MCDS['mesh']['voxels']['volumes'] = initial_mesh[3, :]
+        MCDS['mesh']['voxels'] = {}
+        MCDS['mesh']['voxels']['centers'] = initial_mesh[:3, :]
+        MCDS['mesh']['voxels']['volumes'] = initial_mesh[3, :]
 
         if parse_continuum_variables:
             # Continuum_variables, unlike in the matlab version the individual chemical
@@ -520,7 +519,7 @@ class pyMCDS:
             nlabels = int(label.get('size'))
             if nlabels > 1: 
                 # tags to differentiate repeated labels (usually space related)
-                print("n=",n)
+                # print("n=",n)
                 spatial_type = False; 
                 if( fixed_label == 'position' ):
                     spatial_type = True; 
