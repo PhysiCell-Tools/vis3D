@@ -6,22 +6,18 @@ This README serves as an updated version of an earlier [blog post](http://www.ma
 
 Dependencies:
 
-* We recommend using the [Anaconda Python distribution](https://www.anaconda.com/products/distribution). The current (June 2022) version provides Python 3.9.x (If you are using a Mac Silicon/arm64 computer, we recommend downloading the x86_64 version, not the arm64 version. The latter does not seem to provide all the necessary Python modules).
+* We recommend using the [Anaconda Python distribution](https://www.anaconda.com/products/distribution). The current (Oct 2023) version provides Python 3.11.x 
 
-* Download [ParaView](https://www.anaconda.com/products/distribution). The current (June 2022) version is 5.10.1 and uses Python 3.9.x. NOTE: it is *required* that your Python version (above) matches that being used by ParaView, e.g., 3.9.
+* Download [ParaView](https://www.anaconda.com/products/distribution). The current (Oct 2023) version is 5.11.2 (and it happens to use Python 3.9.11. NOTE: if you want to use any 3rd party Python modules in your ParaView session, it is *required* that your Python "major.minor" version (above) matches that being used by ParaView. So in this case, it would be problematic: 3.11 vs. 3.9)
 
 Usage:
 
-You need to set an environment variable that will tell ParaView the location of your (Anaconda) Python installation, e.g., in a bash shell:
-```
-export PV_VENV=/Users/heiland/opt/anaconda3
-```
 Optionally, as discussed in the blog post, you can specify where your 3D PhysiCell data is located via:
 ```
 export PHYSICELL_DATA=full-path-to-your-data
 ```
 and then start ParaView *from the shell*, e.g., on macOS:
 ```
-/Applications/ParaView-5.10.1.app/Contents/MacOS/paraview
+/Applications/ParaView-5.11.2.app/Contents/MacOS/paraview
 ```
 From the File menu, select "Load State" to load one of .pvsm (ParaView state) files provided in this repo. Assuming you have the appropriate data file(s), it should run the pipeline and display results.
