@@ -22,6 +22,7 @@ and then start ParaView *from the shell*, e.g., on macOS:
 ```
 In the View menu, select "Python Shell" to display it and enter the following to make the ParaView Python aware of the custom modules needed to run the custom data loader for PhysiCell .mat files. You will want to modify the path to be wherever you downloaded this repo:
 ```
+>>> import sys
 >>> sys.path.append("/Users/heiland/git/vis3D/ParaView/matv4_loader")
 ```
 From the File menu, select "Load State" to load one of .pvsm (ParaView state) files provided in this repo. Assuming you have the appropriate data file(s), it should run the pipeline and display results.
